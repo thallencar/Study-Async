@@ -18,7 +18,7 @@
             <div class="col-md">
                 
                 <div class="box-form">
-                    <form action="{% url 'novo_flashcard'%}" method="POST"> {% csrf_token %}
+                    <form action="{% url 'novo_flashcard' %}" method="POST"> {% csrf_token %}
                         <h3>Novo flashcard</h3>
                         {% if messages %}
                             <br>
@@ -68,7 +68,8 @@
 
             </div>
             <div class="col-md">
-                <form action="" method="GET">
+                <form action="{% url 'novo_flashcard' %}" method="GET">
+                    <!--Requisição GET não precisa de csrf token-->
                     <div class="row">
                         <div class="col-md">
                             <label for="">Categoria</label>
@@ -99,25 +100,25 @@
 
                 <br>
                 <br>
-                {% for flashcard in flashcards %}
+                {% for flash in flashcards %}
                
                     <div class="box-new-flashcard">
                         <div class="flashcard ">
 
                             <div class="flashcard-categoria">
-                                {{flashcard.categoria}}
+                                {{flash.categoria}}
                             </div>
 
                             <a href=""><i class='icone-exit bx bx-x-circle'></i></a>
                             <br>
                             <br>
                             <div class="flashcard-box-item">
-                                <p class="flashcard-item">{{flashcard.pergunta}}</p>
+                                <p class="flashcard-item">{{flash.pergunta}}</p>
                             </div>
                             
                         </div>
                         <div class="resposta-flashcard">
-                            {{flashcard.resposta}}
+                            {{flash.resposta}}
                         </div>
                     </div>
                 
